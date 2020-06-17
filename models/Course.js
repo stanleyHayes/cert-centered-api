@@ -12,10 +12,6 @@ const CourseSchema = new Schema({
         type: String,
         required: [true, 'Course code required']
     },
-    departments: {
-        type: [Schema.Types.ObjectId],
-        ref: 'Department'
-    },
     description: {
         type: String,
         required: [true, 'Course Description required']
@@ -27,6 +23,18 @@ const CourseSchema = new Schema({
     image: {
         type: String,
         required: [true, 'Course image required']
+    },
+    departments: {
+        type: [Schema.Types.ObjectId],
+        ref: "Department"
+    },
+    skillLevel: {
+        type: String,
+        enum: ['BEGINNER', 'INTERMEDIATE', 'ADVANCED'],
+        default: 'BEGINNER'
+    },
+    objectives: {
+        type: [String]
     }
 });
 
